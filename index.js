@@ -1,5 +1,6 @@
 import express from "express";
-import dotenv from "dotenv";
+import * as dotenv from 'dotenv';
+import cors from 'cors';
 import { connectDB } from "./mongoDB/connectDB.js";
 import authRoutes from "./routes/authRoutes.js";
 import resumeRoutes from "./routes/resumeRoutes.js";
@@ -11,6 +12,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/resume", resumeRoutes);
