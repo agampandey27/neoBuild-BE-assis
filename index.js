@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 (async () => {
     try {
         await connectDB(process.env.MONGO_URI);
-        app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`));
+        app.listen(8080, () => console.log(`Server running on PORT: 8080`));
     } catch (error) {
         console.log(error);
     }
