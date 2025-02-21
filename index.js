@@ -1,7 +1,8 @@
 import express from "express";
 import * as dotenv from 'dotenv';
 import cors from 'cors';
-import { connectDB } from "./mongoDB/connectDB.js";
+// import { connectDB } from "./mongoDB/connectDB.js";
+import connectDB from './mongodb/connectDB.js';
 import authRoutes from "./routes/authRoutes.js";
 import resumeRoutes from "./routes/resumeRoutes.js";
 
@@ -21,11 +22,21 @@ app.get("/", (req, res) => {
     res.status(200).send("Resume Analysis API Running");  
 });
 
-(async () => {
+// (async () => {
+//     try {
+//         await connectDB(process.env.MONGO_URI);
+//         app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`));
+//     } catch (error) {
+//         console.log(error);
+//     }
+// })();
+const startServer = async () => {
     try {
-        await connectDB(process.env.MONGO_URI);
-        app.listen(8080, () => console.log(`Server running on PORT: 8080`));
+      connectDB(process.env.MONGO_URI);
+      app.listen(8080, () => console.log('Server started on port 8080'));
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-})();
+  };
+  
+  startServer();
