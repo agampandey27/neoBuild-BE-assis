@@ -17,7 +17,9 @@ app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/resume", resumeRoutes);
 
-app.get("/", (req, res) => res.status(200).send("Resume Analysis API Running"));
+app.get("/", (req, res) => {
+    res.status(200).send("Resume Analysis API Running");  
+});
 
 (async () => {
     try {
