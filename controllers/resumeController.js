@@ -37,7 +37,7 @@ export const processResume = async (req, res) => {
 
 export const searchResume = async (req, res) => {
     try {
-        
+
       const { name } = req.body;
       if (!name) return res.status(400).json({ message: "Name query is required" });
   

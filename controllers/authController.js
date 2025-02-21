@@ -9,7 +9,7 @@ export const login = async (req, res) => {
     const { username, password } = req.body;
 
     if (username !== preDefinedUser.username || password !== preDefinedUser.password) {
-        return res.status(401).json({ error: "Invalid Credentials" });
+        return res.status(402).json({ error: "Invalid Credentials" });
     }
 
     const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: "1h" });

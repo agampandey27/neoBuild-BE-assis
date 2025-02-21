@@ -23,11 +23,13 @@ app.get("/", (req, res) => {
 
 const startServer = async () => {
     try {
-      connectDB(process.env.MONGO_URI);
-      app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+        await connectDB(process.env.MONGO_URI); 
+        app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
     } catch (error) {
-      console.log(error);
+        console.error("Error starting server:", error);
+        process.exit(1);
     }
-  };
-  
-  startServer();
+};
+
+startServer();
+
